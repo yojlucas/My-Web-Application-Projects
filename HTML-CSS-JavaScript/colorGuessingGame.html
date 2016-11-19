@@ -1,0 +1,78 @@
+<!-- week2-part1.html 
+Introduction to JavaScript
+by: Joy Lucas
+	August 26, 2016 -->
+<!--This is a guessing game project of week2 Intro to JavaScript
+including variables, arrays, loops and functions.-->
+	
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+	<script> 
+	
+	//DECLARE ALL THE GLOBAL VARIABLES. 
+	var target_index;  <!-- this variable is to store the generated random number -->
+	var target;		  <!--this variable is to store the colors being picked -->
+	var guess_input;  <!--this variable is to store the guesses from the user -->
+	var guesses = 0;  <!--this variable is to be used to increment the number of guess by the user -->
+	var finished = false; 
+	var colors = ["cyan", "coral", "gray", "gold", "crimson", "aqua", "green",
+				 "lime", "tan", "maroon", "olive", "orchid", "teal"];
+				 
+	 <!--this function is triggered when the web page is loaded.-->
+		function do_game() {
+
+			var target_index = colors[Math.floor(Math.random() * colors.length -1)]; //Get a random value from an array.
+			target = target_index; //to store the color being picked from the colors array.
+			colors = colors.sort(); //Sorts the colors in the array in alphabetical order. 
+			
+			alert("Target color is: " + target.toUpperCase() + "\n\n");
+
+			while (!finished) {
+			guess_input = prompt("I am thinking of one of these colors: \n\n " +  colors.join(", ") + 							
+							"\n\n What color am I thinking of? ");		
+			guesses += 1; 
+			finished = check_guess();			
+			}					
+		}//end of function do_game()	
+		
+		function check_guess() {
+					  
+			if (colors.indexOf(guess_input) == -1) {
+				alert("Sorry, I don't recognize your color! \n\n" + 
+					  "Please try again." );
+				return false;				
+			}
+			if (guess_input > target ) {
+				alert("Sorry, your guess is not correct! \n\n " + 
+					  " Hint: Your color is alphabetically higher than mine. \n\n" + 
+					  "Please try again.");
+				return false;
+			}
+			if (guess_input < target) {
+				alert("Sorry your guess is not correct! \n\n " + 
+					  " Hint: Your color is alphabetically lower than mine. \n\n" + 
+					  "Please try again.");
+				return false;
+			}
+			if (guess_input == target){
+				myBody = document.getElementsByTagName("body")[0]; //to set the background color once the target is guessed. 
+				myBody.style.background = target;
+				alert("Congratulations! You have guessed the right color! \n\n " + 
+				      target.toUpperCase() + " is correct! \n\n " +
+			          "It took you " + guesses +  " guesses to finish the game! \n\n" + 
+				      "Click 'OK' to see the color in the background.");				  
+				
+				return true;
+				}
+			
+		} //end of function chess_guess()	
+	</script
+</head>
+
+<body onload = "do_game()"> <!--calling to trigger the function-->
+
+</body>
+</html>

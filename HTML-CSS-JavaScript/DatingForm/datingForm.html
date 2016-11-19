@@ -1,0 +1,165 @@
+<!--week1-part3.html 
+by: Joy Lucas
+	August 20, 2016 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="ISO-8859-1">
+<meta name="description" content="HTML and CSS Project - week1">
+<meta name="author" content="Joy Lucas">
+<title>Week 1 Project - Dating Website</title>
+
+<!--EMBEDDED CSS style> -->
+<style>		 
+	fieldset {
+		background: lightyellow;
+		width: 720px;
+		margin-bottom:10px;
+		border: 10px solid yellow;
+	}
+	#preview {
+		height: 10%;
+		width: 10%;		
+	}
+	label{
+		width: 180px;
+		display: inline-block;
+		text-align: right;	
+		float: top;	
+	}
+	.radio{
+		width: auto;
+		text-align: left;
+	}
+	.checkbox{
+		width: auto;
+		text-align: left;	
+	}
+	.short{
+		 background: brown;	 
+	}
+	.salary{
+		background:purple;	
+	}
+	.short, .salary{
+		text-align: center;
+		color: white;
+		width: 45px;
+		display: inline-block;
+	}
+	.textarea{
+		width: 360px;
+		height: 50px;
+		vertical-align: top;
+	}
+	p{background:red;
+	display: inline-block;
+	width: 40px;
+	padding: 2px;
+	}
+	label:hover, input:hover {font-size:20px}
+</style>
+<!--end of EMBEDDED CSS style -->
+
+</head>
+
+<body>
+
+	<h2>Please Enter Your Details For Our Dating Website!</h2>
+	
+	<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php"
+				method="post" enctype="multipart/form-data">	
+ 
+	<fieldset>
+		<legend>Your Face</legend>
+			
+				<label for="image">Your image:</label>
+				<input type="file" name="image" accept="image/*" required><br>
+				
+				<label for="preview">Image preview:</label>
+				<img id="preview"/>			
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your Gender Details</legend>
+		
+			<label for="name">Name:</label>
+			<input type="text" name="name" placeholder="Your full name" required><br>
+			
+			<label for="gender">Gender:</label>
+			<input type="radio" name="gender" required>
+			<label for="male" class="radio" >Male</label>
+			<input type="radio" name="gender" required>
+			<label for="female" class="radio" >Female</label><br>
+						
+			<label for="age">Age:</label>
+			<input type="number" name="age" value="18" max="99" min="1" required><br>
+			
+			<label for="birth">Date of Birth:</label>
+			<input type="date" id="birth" name="birth"><br>
+			
+			<label for="color">Favorite Color:</label>
+			<input type="color" name="color" id="color"><br>
+			
+			<label for="country">Which Country:</label>
+				<select name="countries">
+					<option selected disabled hidden value="">  </option>
+					<option value="no-selection">--no selection--</option>
+					<option value="US">United States of America</option>
+					<option value="PHI">Philippines</option>
+					<option value="UK">United Kingdom</option>
+					<option value="BR">Brazil</option>
+					<option value="CHI">China</option>		
+				</select>			
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your Indicators</legend>
+		
+			<label for="height">Height:</label>						
+			<div class="short">Short</div>
+			<input type="range" min="0" max="100" step="1" 
+				name="height">
+			<div class="salary">Tall</div><br>
+		
+			<label for="salary">Salary:</label>		
+			<div class="short">Poor</div>
+			<input type="range" min="0" max="100" step="1" 
+				name="salary">
+			<div class="salary">Rich</div>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your Contact Information</legend>
+			<label for="email">Email:</label>
+			<input type="email" name="email" required><br>
+			
+		    <label for="contact">Mobile:</label>
+			<input type="tel" name="contact"><br>
+			
+			<label for="address">Address:</label>
+			<textarea rows="3" cols="60" name="address" class="textarea"></textarea><br>
+			
+			<label for="contact">Method to contact you:</label>
+			
+			<input type="checkbox" name="email">			
+			<label for="email"class="checkbox">Email</label>
+			
+			<input type="checkbox" name="whatsapp">
+			<label for="whatsapp" class="checkbox">Whatsapp</label>
+			
+			<input type="checkbox" name="email">
+			<label for="chat" class="checkbox">In-app chat</label>						
+	</fieldset>
+		
+		<input type="Submit" value="Submit">
+
+	</form>
+	<!--this is the link to the JavaScript code provided by the teacher to preview face img
+	immediately once the user select to Choose the File to upload -->
+	<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+	
+</body>
+</html>

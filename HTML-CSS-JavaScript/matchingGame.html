@@ -1,0 +1,89 @@
+<!-- week3-part4.html 
+Advanced JavaScript
+by: Joy Lucas
+	Sept. 4, 2016 -->
+
+<!DOCTYPE>
+<html>
+	<head>
+	<title>Advanced JavaScript - Matching Game - Part3</title>
+	
+	<style>
+		img {position: absolute;
+		}
+		div { position: absolute;
+			  width: 500px;
+			  height: 500px;		
+		}
+		#rightSide { left: 500px;
+					 border-left: 1px solid black;
+		}	
+	</style>
+	
+	<script>
+	
+		function getRandom(min, max) {
+			return Math.floor((Math.random()*(max-min))) + min;
+		}
+		var numberOfFaces = 5;
+		
+		function generateFaces() {
+		
+			var theBody = document.getElementsByTagName("body")[0];
+			
+			//This will delete the nodes and a new set of faces will be generated.
+			var theLeftSide = document.getElementById("leftSide");
+				while(theLeftSide.firstChild) {
+				theLeftSide.removeChild(theLeftSide.firstChild); 
+				}
+			//This will delete the nodes and a new set of faces will be generated.
+			var theRightSide = document.getElementById("rightSide");
+				while(theRightSide.firstChild){
+				theRightSide.removeChild(theRightSide.firstChild); 
+				}
+				
+			for(var i = 0; i < numberOfFaces; i++) {
+				var theImg = document.createElement("img");
+				theImg.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+				theImg.style.top = getRandom(0, 400) + "px";
+				theImg.style.left = getRandom(0, 400) + "px";
+				theLeftSide.appendChild(theImg); //this is to copy and paste the node (img) after the clone. 			
+			}	
+			var leftSideImages = leftSide.cloneNode(true);
+			leftSideImages.removeChild(leftSideImages.lastChild);
+			theRightSide.appendChild(leftSideImages);
+		
+		//The code below is to handle the events and game logic. 
+		var theBody = document.getElementsByTagName("body")[0];
+		
+		//Add an event handler function when the user clicks the extra face(img) on the left side.  
+		theLeftSide.lastChild.onclick = function nextLevel(event){
+										event.stopPropagation(); //this will make sure that the event will only happen once 
+																//and not to apply other elements of other faces in the webpage. 
+										numberOfFaces += 5;
+										generateFaces();
+									};
+		//Event handler function when the user clicks the wrong face, means clicking part of the <body>.
+		theBody.onclick = function gameOver() {
+			// is an alert window to show the user that the game is over, they click the wrong face.
+			alert("Oops! You failed to select the correct face! " + "\n\n Game is Over!"); 
+			theBody.onclick = null; //nothing will happen when the user clicks anywhere else in the page.
+			theLeftSide.lastChild.onclick = null; //nothing will happen when the user clicks another face on the lifeSide, Game is over.
+			};		
+		}			
+	</script>
+	
+	</head>
+
+	<body onload ="generateFaces()"> <!--This function will be executed when the page is loaded -->
+	
+		<h2> Matching Game - Part 4</h2>
+		
+		<p> Locate and click on the extra smiling face on the left. </p>
+
+			<div id = "leftSide"></div>	
+			<div id = "rightSide"></div>
+	</body>
+	
+</html>
+
