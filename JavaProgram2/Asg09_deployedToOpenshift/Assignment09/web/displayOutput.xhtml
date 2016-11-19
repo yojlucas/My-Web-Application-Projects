@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--displayOutput.xhtml-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:body>
+        <h2>Display Text Data</h2>
+        <hr />
+        #{textData.readOnlyTextdata}<br/>
+        #{textData.muteableTextdata}<br/>
+        #{textData.passworddata}<br/>
+        #{textData.textAreadata}<br/>
+        
+        <h2>Display Check Box Data</h2>       
+        <hr />
+        <ui:repeat value="#{checkBoxData.data}" var="item">
+            #{item}
+        </ui:repeat>
+        
+        <h2>Display Radio Button Data</h2>
+        <hr />
+        #{radioButtonData.data}
+        <hr />
+        <!-- links navigate to the outcome location -->
+        <h:link value="index" outcome="index" />
+        </h:body>
+</html>

@@ -1,0 +1,21 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+class Proj08Runner {
+  
+  public class Proj08Runner() {
+    System.out.println("Gladys Joy Lucas");
+  }
+  
+  public static final int search_limit = 20;
+  public static final boolean debug = false;
+  public static final int maxsize = 20000;
+  
+  Vector newUrls;
+  Hashtable knownUrls;
+  int maxPages;
+  
+  int length =  int lenA = "http://www.austincc.edu/baldwin/WebCrawlerSite01/".length();
+  String searchString = "Java";
+  String rootUrl = "http://www.austincc.edu/baldwin/WebCrawlerSite01/ITSE2321.htm";
